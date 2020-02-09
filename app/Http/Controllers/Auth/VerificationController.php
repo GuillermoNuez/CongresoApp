@@ -47,7 +47,8 @@ class VerificationController extends Controller
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
     
-    public function verify(Request $request){
+    public function verify(Request $request)
+    {
         $user = \App\User::find($request->route('id'));
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));

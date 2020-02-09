@@ -76,9 +76,10 @@ class PagoController extends Controller
      * @param  \App\pago  $pago
      * @return \Illuminate\Http\Response
      */
-    public function edit(pago $pago)
+    public function edit($id)
     {
-        //
+        $pago = Pago::find($id);   
+        return view("Pago.edit")->with(['pago' => $pago]);
     }
 
     /**
@@ -88,11 +89,21 @@ class PagoController extends Controller
      * @param  \App\pago  $pago
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pago $pago)
+    public function update(Request $request, $id)
     {
-        //
-    }
 
+        $user = Pago::find($id);
+
+        if($request['verified']=="on") {
+          $user->verified=1;
+        }
+        else {
+          $user->verified=0;
+        }
+
+        $user->save();
+        return view("Pago.index")->with(['pagos' => Pago::all()]);
+    }
     /**
      * Remove the specified resource from storage.
      *

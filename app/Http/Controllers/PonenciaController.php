@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ponencia;
 use App\pago;
 use App\User;
+use App\userponencia;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -69,8 +70,9 @@ class PonenciaController extends Controller
     {
         $ponencia = Ponencia::find($id);
         $pago= Pago::where('iduser',Auth::id())->first();
+        $userponencia= UserPonencia::where('iduser',Auth::id())->where('idponencia',$id)->first();
 
-        return view('Ponencia.show', compact("ponencia","pago"));
+        return view('Ponencia.show', compact("ponencia","pago","userponencia"));
     }
 
     /**

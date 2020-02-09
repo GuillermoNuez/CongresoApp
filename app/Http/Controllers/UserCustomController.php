@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\CustomEmail;
 
 class UserCustomController extends Controller
 {
@@ -41,7 +43,6 @@ class UserCustomController extends Controller
             "name"=>"required",
             "email"=>"required",
             "type"=>"required",
-            "password"=>"required"
         ]);
         
         $user = new User([
@@ -49,12 +50,16 @@ class UserCustomController extends Controller
             "name" => $request->get("name"),
             "email" => $request->get("email"),
             "type" => $request->get("type"),
-            "password" => $request->get("password"),
+            "password" => $request->get("name")."123",
         ]);
         
         $user->save();
         
-        return redirect()->route('User.create');
+        $correo = $request->input('email');
+        Mail::to($correo)->send(new CustomEmail($user));
+
+        
+        return redirect()->route('User.index');
     }
 
     /**

@@ -6,6 +6,7 @@
    <title>Crear Ponencia</title>
 </head>
 <body>
+  @if (Auth::user()->type == 'Admin')
    <div class="row">
       <div class="column">
          <br>
@@ -35,4 +36,30 @@
       </form>
       </div>
    </div>
+  @endif
+  
+  @if (Auth::user()->type == 'Ponente')
+     <div class="row">
+      <div class="column">
+         <br>
+         <h3>Añadir datos</h3>
+         <br>
+         
+      <form method="post" action="{{url('Ponencia')}}">
+         @csrf
+         <div class="form-group">
+               <input type="text" name="title" class="form-control" placeholder="Title"/>
+         </div>
+         <div class="form-group">
+               <input type="text" name="video" class="form-control" placeholder="Video"/>
+         </div>
+         <input type="text" name="iduser" class="form-control" placeholder="Title" value="{{ Auth::user()->id }}" hidden/>
+         <div class="form-group">
+               <input type="submit"/>
+         </div>
+      </form>
+      </div>
+   </div>
+  @endif
+  
 @endsection

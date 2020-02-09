@@ -31,10 +31,6 @@
          </div>
          
          <div class="form-group">
-               <input type="password" name="password" class="form-control" placeholder="Password"/>
-         </div>
-
-         <div class="form-group">
                <input type="submit"/>
          </div>
       </form>

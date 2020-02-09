@@ -11,9 +11,11 @@
    <form method="post" action="{{url('UserPonencia')}}">
    @csrf
     <input name="idponencia" value="{{$ponencia->id}}" hidden class="form-control"/>
-      @if (!empty($pago))
-       <input class="btn btn-primary" type="submit" value="Asistir"/>
-      @endif
+    @if (empty($userponencia))
+          @if (!empty($pago))
+           <input class="btn btn-primary" type="submit" value="Asistir"/>
+          @endif
+    @endif
    </form>
    <br>
 

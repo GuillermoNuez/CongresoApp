@@ -69,9 +69,9 @@ class UserponenciaController extends Controller
      * @param  \App\userponencia  $userponencia
      * @return \Illuminate\Http\Response
      */
-    public function edit(userponencia $userponencia)
+    public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -81,9 +81,9 @@ class UserponenciaController extends Controller
      * @param  \App\userponencia  $userponencia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, userponencia $userponencia)
+    public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

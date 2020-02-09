@@ -6,6 +6,7 @@
    <title>Edit user</title>
 </head>
 <body>
+    @if (Auth::user()->type == 'Comite' || Auth::user()->type == 'Admin')
    <div class="row">
       <div class="column">
          <br>
@@ -51,4 +52,7 @@
       </form>
       </div>
    </div>
+   @else
+   <p>No tiene permisos para esta accion</p>
+   @endif
 @endsection

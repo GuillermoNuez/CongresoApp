@@ -33,9 +33,6 @@
                     
                     @endif
                     
-  
-                    
-                    
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -65,13 +62,17 @@
     @endif
     
     @if (Auth::user()->type ==  'Ponente')
+        <a href="{{route('User.index')}}">View Asistenes</a>
+        <br><br>
         <a href="{{route('Ponencia.index')}}">View Ponencias</a
     @endif
 
     @if (Auth::user()->type ==  'Comite')
-    <a href="{{route('Ponencia.index')}}">View Ponencias</a><br><br>
+    <a href="{{route('Ponencia.index')}}">View Ponencias</a>
+    <br><br>
     <a href="{{route('User.index')}}">View Users</a>
-    <a href="{{route('Pagos.index')}}">View Pagos</a>
+    <br><br>
+    <a href="{{route('Pago.index')}}">View Pagos</a>
     @endif
     
     @if (Auth::user()->type ==  'Asistente')
